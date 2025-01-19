@@ -1,5 +1,13 @@
+/* App.css */
+
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +43,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+p {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+.header,
+.footer {
+  background-color: #fff;
+  padding: 1rem 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.footer {
+  font-size: 0.875rem;
+  color: #777;
+  margin-top: auto;
+  background-color: #282c34;
+  color: black;
+}
+
+.info-section {
+  padding: 2rem 0;
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 function InfoSection() {
     return (
-        <section style={{ padding: "20px", textAlign: "center" }}>
+        <section className="info-section" style={{ padding: "20px", textAlign: "center" }}>
             <h2>About MilkNet</h2>
             <p>
                 MilkNet is a blockchain-powered platform that connects farmers and consumers directly,
