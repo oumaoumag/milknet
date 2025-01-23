@@ -4,6 +4,8 @@
 
 MilkNet is a revolutionary platform designed to bring cutting-edge technology into the dairy industry. By leveraging blockchain, data analytics, and user-centric design, MilkNet aims to optimize supply chain management, enhance transparency, and streamline operations for all stakeholders involved in dairy production, distribution, and retail.
 
+**The app is currently deployed on Vercel and can be accessed here: [MilkNet](https://milknet.vercel.app/)**
+
 ## Vision and Mission
 
 MilkNet envisions a world where dairy supply chains are highly efficient, transparent, and equitable. The platform's mission is to empower farmers, distributors, retailers, and consumers with tools that:
