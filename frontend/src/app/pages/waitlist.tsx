@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 import { CheckIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -97,7 +98,7 @@ const Waitlist = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <img 
+          <Image 
             src="https://via.placeholder.com/140x50" 
             alt="MilkNet Logo" 
             width={140} 
@@ -137,7 +138,7 @@ const Waitlist = () => {
                   whileHover={{ scale: 1.05 }}
                   className={`p-4 rounded-lg ${feature.color} flex items-center`}
                 >
-                  <img 
+                  <Image
                     src={feature.icon} 
                     alt={feature.title} 
                     width={40} 
