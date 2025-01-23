@@ -1,160 +1,247 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import Footer from '../components/footer';
+import { CheckIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-function Waitlist() {
+const features = [
+  {
+    title: 'Seamless Connections',
+    description: 'Direct farmer-to-supplier connections',
+    icon: 'https://via.placeholder.com/40',
+    color: 'bg-green-50',
+    textColor: 'text-green-600'
+  },
+  {
+    title: 'Secure Transactions',
+    description: 'Transparent blockchain payments',
+    icon: 'https://via.placeholder.com/40',
+    color: 'bg-blue-50',
+    textColor: 'text-blue-600'
+  },
+  {
+    title: 'Advanced Tracking',
+    description: 'Cutting-edge logistics tools',
+    icon: 'https://via.placeholder.com/40',
+    color: 'bg-purple-50',
+    textColor: 'text-purple-600'
+  },
+  {
+    title: 'Eco-Friendly',
+    description: 'Sustainability insights',
+    icon: 'https://via.placeholder.com/40',
+    color: 'bg-emerald-50',
+    textColor: 'text-emerald-600'
+  }
+];
+
+const Waitlist = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    role: 'farmer',
-    organization: ''
+    phone: '',
+    role: 'farmer'
   });
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [countdown, setCountdown] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+  const [formErrors, setFormErrors] = useState({
+    name: false,
+    email: false
   });
 
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const launchDate = new Date('2024-12-31').getTime();
-      const now = new Date().getTime();
-      const difference = launchDate - now;
-
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      };
+  const validateForm = () => {
+    const errors = {
+      name: !formData.name.trim(),
+      email: !formData.email.trim() || !formData.email.includes('@')
     };
-
-    const timer = setInterval(() => {
-      setCountdown(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+    setFormErrors(errors);
+    return !Object.values(errors).some(Boolean);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setIsLoading(false);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Submission error', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-        <div className="text-center text-white p-8 animate-fadeIn">
-          <h2 className="text-4xl font-bold mb-4">Thank You!</h2>
-          <p className="text-xl">We'll notify you when MilkNet launches.</p>
-        </div>
-      </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-blue-100"
+      >
+        <motion.div 
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          className="text-center p-12 bg-white rounded-2xl shadow-2xl"
+        >
+          <CheckIcon className="mx-auto mb-6 text-green-500" size={72} />
+          <h2 className="text-4xl font-bold mb-4 text-gray-800">Thank You!</h2>
+          <p className="text-xl text-gray-600">You're on the MilkNet early access list.</p>
+        </motion.div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center text-white mb-16 animate-fadeDown">
-          <h1 className="text-5xl font-bold mb-6">
-          MILKNET<br/>
-            The Future of Dairy Supply Chain
-          </h1>
-          <p className="text-xl mb-8">
-            Join the revolution in transparent and efficient dairy farming
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <img 
+            src="https://via.placeholder.com/140x50" 
+            alt="MilkNet Logo" 
+            width={140} 
+            height={50} 
+            className="h-12"
+          />
+          <div className="space-x-4">
+            <a 
+              href="#features" 
+              className="text-black hover:text-green-600 transition"
+            >
+              Features
+            </a>
+            <a 
+              href="#waitlist" 
+              className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
+            >
+              Join Waitlist
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main className="container mx-auto px-4 py-16">
+        <section className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-5xl font-bold text-gray-800 mb-6">
+              Transform Your Dairy Supply Chain
+            </h1>
+            <p className="text-xl text-black mb-8">
+              MilkNet leverages blockchain to connect farmers, suppliers, and consumers seamlessly.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {features.map((feature, index) => (
+                <motion.div 
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  className={`p-4 rounded-lg ${feature.color} flex items-center`}
+                >
+                  <img 
+                    src={feature.icon} 
+                    alt={feature.title} 
+                    width={40} 
+                    height={40} 
+                    className="w-10 h-10"
+                  />
+                  <div className="ml-3">
+                    <h3 className={`font-semibold ${feature.textColor}`}>
+                      {feature.title}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
           
-          {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
-            {Object.entries(countdown).map(([unit, value]) => (
-              <div key={unit} className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="text-4xl font-bold">{value}</div>
-                <div className="text-sm uppercase">{unit}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Features */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Transparent</h3>
-              <p>Track your dairy products from farm to table</p>
-            </div>
-            <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Secure</h3>
-              <p>Blockchain-powered transactions and data</p>
-            </div>
-            <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Efficient</h3>
-              <p>Streamlined supply chain management</p>
-            </div>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
+          <motion.form 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            onSubmit={handleSubmit}
+            className="bg-white p-8 rounded-2xl shadow-2xl space-y-4"
+          >
+            <h2 className="text-2xl font-bold text-center text-black mb-6">
+              Get Early Access
+            </h2>
+            
             <div>
+              <label className="block text-sm font-medium text-black mb-2">
+                Full Name
+              </label>
               <input
                 type="text"
-                placeholder="Your Name"
-                required
-                className="w-full px-4 py-3 bg-white/10 rounded-lg backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter your full name"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className={`w-full p-3 border rounded-lg ${
+                  formErrors.name ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {formErrors.name && (
+                <p className="text-red-500 text-sm mt-1">Name is required</p>
+              )}
             </div>
+
             <div>
+              <label className="block text-sm font-medium text-black mb-2">
+                Email Address
+              </label>
               <input
                 type="email"
-                placeholder="Your Email"
-                required
-                className="w-full px-4 py-3 bg-white/10 rounded-lg backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter your email"
                 value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className={`w-full p-3 border rounded-lg ${
+                  formErrors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {formErrors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  Please enter a valid email
+                </p>
+              )}
             </div>
+
             <div>
-              <input
-                type="text"
-                placeholder="Organization (Optional)"
-                className="w-full px-4 py-3 bg-white/10 rounded-lg backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                value={formData.organization}
-                onChange={(e) => setFormData({...formData, organization: e.target.value})}
-              />
-            </div>
-            <div>
+              <label className="block text-sm font-medium text-black mb-2">
+                Role
+              </label>
               <select
-                className="w-full px-4 py-3 bg-white/10 rounded-lg backdrop-blur-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                 value={formData.role}
-                onChange={(e) => setFormData({...formData, role: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                className="w-full p-3 border border-gray-300 rounded-lg"
               >
-                <option value="farmer">Dairy Farmer</option>
-                <option value="consumer">Consumer</option>
-                <option value="distributor">Distributor</option>
+                <option value="farmer">Farmer</option>
+                <option value="supplier">Supplier</option>
+                <option value="logistics">Logistics Partner</option>
+                <option value="customer">Customer</option>
+                <option value="other">Other</option>
               </select>
             </div>
+
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-4 rounded-lg text-white font-semibold transition-all
-                ${isLoading 
-                  ? 'bg-blue-400 cursor-not-allowed' 
-                  : 'bg-blue-500 hover:bg-blue-600 hover:scale-105'}`}
+              className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition flex items-center justify-center"
             >
-              {isLoading ? 'Joining...' : 'Join Waitlist'}
+              {isLoading ? (
+                <div className="animate-spin h-5 w-5 border-2 border-white rounded-full border-t-transparent" />
+              ) : (
+                <>
+                  Get Early Access
+                  <ChevronRightIcon className="ml-2" size={20} />
+                </>
+              )}
             </button>
-          </form>
-        </div>
-      </div>
-      < Footer />
+
+            <p className="text-xs text-blue-800 text-center flex items-center justify-center">
+              <InfoIcon size={12} className="mr-1" />
+              Your data is safe and will never be shared
+            </p>
+          </motion.form>
+        </section>
+      </main>
     </div>
   );
 }
