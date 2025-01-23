@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import { CheckIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
