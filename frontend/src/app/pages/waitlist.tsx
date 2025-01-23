@@ -88,7 +88,7 @@ const Waitlist = () => {
         >
           <CheckIcon className="mx-auto mb-6 text-green-500" size={72} />
           <h2 className="text-4xl font-bold mb-4 text-gray-800">Thank You!</h2>
-          <p className="text-xl text-gray-600">You're on the MilkNet early access list.</p>
+          <p className="text-xl text-gray-600">You&apos;re on the MilkNet early access list.</p>
         </motion.div>
       </motion.div>
     );
