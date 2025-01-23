@@ -18,6 +18,6 @@ export const connectWallet = async () => {
 };
 
 export const loadContract = async (contractAddress, contractABI) => {
-    const { singer } = await connectWallet();
+    const { signer } = await connectWallet();
     return new ethers.Contract(contractAddress, contractABI, signer);
 }
