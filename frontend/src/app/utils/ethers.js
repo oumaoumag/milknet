@@ -13,8 +13,8 @@ export const connectWallet = async () => {
     if (!provider) throw new Error('MetaMask is not installed');
 
     await provider.send('eth_requestAccounts', []);
-    const signer = provider.getSigner.getAddress();
-    return { provider, signer, Address }
+    const signer = provider.getSigner().getAddress();
+    return { provider, signer }
 };
 
 export const loadContract = async (contractAddress, contractABI) => {
