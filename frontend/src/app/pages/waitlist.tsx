@@ -1,7 +1,6 @@
 'use client';
-
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 import Footer from '../components/footer';
 
 function Waitlist() {
@@ -13,33 +12,7 @@ function Waitlist() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [countdown, setCountdown] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
 
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const launchDate = new Date('2024-12-31').getTime();
-      const now = new Date().getTime();
-      const difference = launchDate - now;
-
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      };
-    };
-
-    const timer = setInterval(() => {
-      setCountdown(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,16 +46,6 @@ function Waitlist() {
             Join the revolution in transparent and efficient dairy farming
           </p>
           
-          {/* Countdown Timer */}
-          <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
-            {Object.entries(countdown).map(([unit, value]) => (
-              <div key={unit} className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <div className="text-4xl font-bold">{value}</div>
-                <div className="text-sm uppercase">{unit}</div>
-              </div>
-            ))}
-          </div>
-
           {/* Features */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
