@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Footer from '../components/footer';
 
 function Waitlist() {
   const [formData, setFormData] = useState({
@@ -65,6 +66,7 @@ function Waitlist() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center text-white mb-16 animate-fadeDown">
           <h1 className="text-5xl font-bold mb-6">
+          MILKNET<br/>
             The Future of Dairy Supply Chain
           </h1>
           <p className="text-xl mb-8">
@@ -152,6 +154,7 @@ function Waitlist() {
           </form>
         </div>
       </div>
+      < Footer />
     </div>
   );
 }
