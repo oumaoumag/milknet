@@ -2,7 +2,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Footer from '../components/footer';
-import MeetOurDevs from '../components/devs'
+import MeetOurDevs from '../components/devs';
+import Header from '../components/header';
 import { CheckIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -98,26 +99,7 @@ const Waitlist = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <p className='text-black text-3xl font-bold px-1 py-1 '> MilkNet </p>
-          <div className="space-x-4">
-            <a 
-              href="#zfeatures" 
-              className="text-black hover:text-green-600 transition"
-            >
-              Features
-            </a>
-            <a 
-              href="#waitlist" 
-              className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
-            >
-              Join Waitlist
-            </a>
-          </div>
-        </nav>
-      </header>
-
+      < Header />
       <main className="container mx-auto px-4 py-16">
         <section className="grid md:grid-cols-2 gap-12 items-center">
           <div>
