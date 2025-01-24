@@ -33,7 +33,7 @@ export default function MeetOurDevs() {
   const [activeProfile, setActiveProfile] = useState(0);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 text-black">
+    <section className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 text-black p-10">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-black">
           Meet Our Innovative Team
