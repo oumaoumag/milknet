@@ -16,16 +16,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Features */}
-          <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
-            <h3 className="text-xl font-semibold mb-4">Features</h3>
-            <ul className="space-y-2">
-              <li>Blockchain Technology</li>
-              <li>Supply Chain Tracking</li>
-              <li>Smart Contracts</li>
-            </ul>
-          </div>
-
           {/* Contact */}
           <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm">
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
@@ -41,13 +31,13 @@ export default function Footer() {
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="#" className="hover:scale-110 transition-transform">
-                <Image src="/twitter.svg" alt="Twitter" width={24} height={24} />
+                <Image src="/images/twitter.svg" alt="Twitter" width={24} height={24} />
               </a>
               <a href="#" className="hover:scale-110 transition-transform">
-                <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
+                <Image src="/images/linkedin.svg" alt="LinkedIn" width={24} height={24} />
               </a>
               <a href="#" className="hover:scale-110 transition-transform">
-                <Image src="/github.svg" alt="GitHub" width={24} height={24} />
+                <Image src="/images/github.svg" alt="GitHub" width={24} height={24} />
               </a>
             </div>
           </div>
