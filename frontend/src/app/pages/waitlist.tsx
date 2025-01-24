@@ -9,28 +9,28 @@ const features = [
   {
     title: 'Seamless Connections',
     description: 'Direct farmer-to-supplier connections',
-    icon: 'https://via.placeholder.com/40',
+    icon: '/images/farmer-to-consumer.webp',
     color: 'bg-green-50',
     textColor: 'text-green-600'
   },
   {
     title: 'Secure Transactions',
     description: 'Transparent blockchain payments',
-    icon: 'https://via.placeholder.com/40',
+    icon: '/images/secure-transactions.jpg',
     color: 'bg-blue-50',
     textColor: 'text-blue-600'
   },
   {
     title: 'Advanced Tracking',
     description: 'Cutting-edge logistics tools',
-    icon: 'https://via.placeholder.com/40',
+    icon: '/images/advanced-tracking.jpg',
     color: 'bg-purple-50',
     textColor: 'text-purple-600'
   },
   {
     title: 'Eco-Friendly',
     description: 'Sustainability insights',
-    icon: 'https://via.placeholder.com/40',
+    icon: '/images/ecofriendly.jpg',
     color: 'bg-emerald-50',
     textColor: 'text-emerald-600'
   }
@@ -99,13 +99,7 @@ const Waitlist = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Image 
-            src="https://via.placeholder.com/140x50" 
-            alt="MilkNet Logo" 
-            width={140} 
-            height={50} 
-            className="h-12"
-          />
+          <p className='text-black'> MilkNet </p>
           <div className="space-x-4">
             <a 
               href="#zfeatures" 
