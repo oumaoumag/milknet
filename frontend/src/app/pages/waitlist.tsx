@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import Footer from '../components/footer';
 import { CheckIcon, ChevronRightIcon, InfoIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -107,7 +108,7 @@ const Waitlist = () => {
           />
           <div className="space-x-4">
             <a 
-              href="#features" 
+              href="#zfeatures" 
               className="text-black hover:text-green-600 transition"
             >
               Features
@@ -242,6 +243,7 @@ const Waitlist = () => {
           </motion.form>
         </section>
       </main>
+      < Footer />
     </div>
   );
 }
