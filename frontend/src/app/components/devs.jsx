@@ -5,14 +5,14 @@ import { LinkedinIcon, TwitterIcon, GithubIcon } from 'lucide-react';
 
 const developers = [
   {
-    name: 'Odree Pendo',
+    name: 'Audrey Pendo',
     role: 'Lead Blockchain Developer',
     bio: 'Blockchain architect and Software Engineering Student',
     image: '/images/odree.jpeg',
     socialLinks: {
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com',
-      github: 'https://github.com'
+      linkedin: 'https://www.linkedin.com/in/audrey-pendo-109656346/',
+      twitter: 'https://twitter.com/AudreyOuma_P',
+      github: 'https://github.com/odree123'
     }
   },
   {
