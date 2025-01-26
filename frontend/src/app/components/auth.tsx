@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import { Github, Wallet, Mail, ArrowRight } from 'lucide-react';
 
-function Auth({ setShowAuth }) {
+interface AuthProps {
+  setShowAuth: (show: boolean) => void;
+  onAuthenticate: (authenticated: boolean) => void;
+}
+
+const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
     const [isLogin, setLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form  submission
+
+        if (email && password) {
         console.log('Form submitted:', { email, password });
+        onAuthenticate(true);
+        setShowAuth(false);
+        }
     };
 
     return (
@@ -20,6 +30,7 @@ function Auth({ setShowAuth }) {
             <div className="absolute top-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
           </div>
     
+            {/* <form onSubmit={handleSubmit} className='space-y-6'> */}
           <div className="w-full max-w-md">
             {/* Logo */}
             <div className="text-center mb-8">
@@ -36,6 +47,7 @@ function Auth({ setShowAuth }) {
             >
               Back to Home
             </button>
+
             {/* Auth Options */}
             <div className="space-y-4 mb-8 bg-gray-500 rounded-lg ">
               <button className="w-full bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-3 group">
@@ -103,7 +115,7 @@ function Auth({ setShowAuth }) {
             <p className="mt-8 text-center text-gray-600">
               {isLogin ? "Don't have an account?" : "Already have an account?"}
               <button
-                onClick={() => setIsLogin(!isLogin)}
+                onClick={() => setLogin(!isLogin)}
                 className="ml-2 text-blue-800 hover:text-blue-600 transition-colors"
               >
                 {isLogin ? 'Sign up' : 'Sign in'}
