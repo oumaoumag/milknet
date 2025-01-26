@@ -5,20 +5,20 @@ import { LinkedinIcon, TwitterIcon, GithubIcon } from 'lucide-react';
 
 const developers = [
   {
-    name: 'Odree Pendo',
+    name: 'Audrey Pendo',
     role: 'Lead Blockchain Developer',
-    bio: 'Blockchain architect with 5+ years experience in distributed systems',
+    bio: 'Blockchain architect and Software Engineering Student',
     image: '/images/odree.jpeg',
     socialLinks: {
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com',
-      github: 'https://github.com'
+      linkedin: 'https://www.linkedin.com/in/audrey-pendo-109656346/',
+      twitter: 'https://twitter.com/AudreyOuma_P',
+      github: 'https://github.com/odree123'
     }
   },
   {
     name: 'Ouma Ouma',
     role: 'Full Stack Engineer',
-    bio: 'Expert in React, Node.js, and smart contract development',
+    bio: 'Expert in Golang, React, Node.js, and smart contract development',
     image: '/images/godwin.jpeg',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/ouma-ouma-a01716267',
@@ -33,8 +33,7 @@ export default function MeetOurDevs() {
   const [activeProfile, setActiveProfile] = useState(0);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 text-black p-10">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto min-h bg-gradient-to-br from-green-50 to-blue-50 p-10">
         <h2 className="text-4xl font-bold text-center mb-12 text-black">
           Meet Our Innovative Team
         </h2>
@@ -89,6 +88,5 @@ export default function MeetOurDevs() {
           ))}
         </div>
       </div>
-    </section>
   );
 }
