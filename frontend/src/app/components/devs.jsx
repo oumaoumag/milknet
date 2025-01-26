@@ -7,7 +7,7 @@ const developers = [
   {
     name: 'Odree Pendo',
     role: 'Lead Blockchain Developer',
-    bio: 'Blockchain architect with 5+ years experience in distributed systems',
+    bio: 'Blockchain architect and Software Engineering Student',
     image: '/images/odree.jpeg',
     socialLinks: {
       linkedin: 'https://linkedin.com',
@@ -18,7 +18,7 @@ const developers = [
   {
     name: 'Ouma Ouma',
     role: 'Full Stack Engineer',
-    bio: 'Expert in React, Node.js, and smart contract development',
+    bio: 'Expert in Golang, React, Node.js, and smart contract development',
     image: '/images/godwin.jpeg',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/ouma-ouma-a01716267',
