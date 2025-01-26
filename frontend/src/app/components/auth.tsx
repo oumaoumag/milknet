@@ -12,7 +12,6 @@ const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
     const [isLogin, setLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState<UserType>(null);
     const [selectedUserType, setSelectedUserType] = useState<UserType>(null)
 
     const handleUserTypeSelect = (type: UserType) => {
@@ -29,33 +28,59 @@ const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
         }
     };
 
+    // // User Type Selection Component
+    const UserTypeSelection = () => (
+      <div className='space-y-4 mb-6'>
+        <div className='text-center mb-4'>
+          <h3 className="text-xl font-semibold text-green-500">Select Your Role</h3>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <button
+          onClick={() => handleUserTypeSelect('consumer')}
+          className={`flex flex-col items-center p-4 rouded-lg transition-all ${
+            selectedUserType === 'consumer'
+            ? 'bg-blue-600 text-white'
+            : 'bg-white/10 hover:bg-white/20 text-black'
+          }`}
+          >
+             <UserCircle className="w-10 h-10 mb-2" />
+        Consumer
+      </button>
+      <button
+        onClick={() => handleUserTypeSelect('farmer')}
+        className={`flex flex-col items-center p-4 rounded-lg transition-all ${
+          selectedUserType === 'farmer'
+            ? 'bg-blue-600 text-white'
+            : 'bg-white/10 hover:bg-white/20 text-black'
+        }`}
+      >
+            <TractorIcon className='w-10 h-10 mb-2' />
+            Farmer
+            </button>
+        </div>
+      </div>
+    );
+  
     
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center px-4">
-            
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl bg-blue-50" />
-            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-          </div>
-    
-            {/* <form onSubmit={handleSubmit} className='space-y-6'> */}
-          <div className="w-full max-w-md">
-            {/* Logo */}
+        <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-green-500">Welcome to MilkNet</h2>
               <p className="text-gray-600 mt-2">
-                {isLogin ? 'Sign in to continue to the platform' : 'Create your account to get started'}
+                {isLogin ? 'Sign in to continue to the platform' 
+                : 'Create your account to get started'}
               </p>
             </div>
-    
-            {/* Back Button */}
-            <button
-              onClick={() => setShowAuth(false)}
-              className="w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 mb-6 rounded-lg transition-all"
-            >
+
+            <button 
+            onClick={() => setShowAuth(false)}
+            className='w-full bg-gray-700 hover:bg-gray-500 text-white px-4 py-2 mb-6 rounded-lg transition-all'>
               Back to Home
             </button>
+
+          {!isLogin && !selectedUserType && <UserTypeSelection />}
 
             {/* Auth Options */}
             <div className="space-y-4 mb-8 bg-gray-500 rounded-lg ">
@@ -82,7 +107,7 @@ const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
             </div>
     
             {/* Email Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {(isLogin || selectedUserType) && ( <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-2">
                   Email address
@@ -119,6 +144,8 @@ const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
+          )}
+           
     
             {/* Toggle Auth Mode */}
             <p className="mt-8 text-center text-gray-600">
@@ -133,6 +160,7 @@ const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
           </div>
         </div>
       );
-    }
+    };
     
     export default Auth;
+
