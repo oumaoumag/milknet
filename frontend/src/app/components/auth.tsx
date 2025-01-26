@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
-import { Github, Wallet, Mail, ArrowRight } from 'lucide-react';
+import { Github, Wallet, Mail, ArrowRight, UserCircle, TractorIcon } from 'lucide-react';
+
+type UserType = 'consumer' | 'farmer' | null;
 
 interface AuthProps {
   setShowAuth: (show: boolean) => void;
-  onAuthenticate: (authenticated: boolean) => void;
+  onAuthenticate: (authenticated: boolean, userType: UserType) => void;
 }
 
 const Auth: React.FC<AuthProps> = ({ setShowAuth, onAuthenticate }) => {
     const [isLogin, setLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userType, setUserType] = useState<UserType>(null);
+    const [selectedUserType, setSelectedUserType] = useState<UserType>(null)
+
+    const handleUserTypeSelect = (type: UserType) => {
+      setSelectedUserType(type);
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form  submission
 
-        if (email && password) {
-        console.log('Form submitted:', { email, password });
-        onAuthenticate(true);
+        if (email && password && selectedUserType) {
+        console.log('Form submitted:', { email, password, UserType: selectedUserType});
+        onAuthenticate(true, selectedUserType);
         setShowAuth(false);
         }
     };
+
+    
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center px-4">
