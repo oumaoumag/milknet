@@ -124,23 +124,41 @@ npm run build
 
 ```plaintext
 milknet/
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── pages/
-│   │   │   │   └── waitlist.tsx
-│   │   │   ├── components/
-│   │   │   │   └── footer.tsx
-│   │   │   └── utils/
-│   │   │       └── ethers.js
-│   │   └── styles/
-│   │       └── globals.css
-│   ├── public/
-│   │   └── images/
-│   └── next.config.ts
-└── backend
-    └──contracts/
-        └── ProductRegistration.sol
+├── src/
+│   ├── app/
+│   │   ├── (auth)/
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   ├── register/
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (dashboard)/
+│   │   │   ├── farmer/
+│   │   │   │   ├── livestock/
+│   │   │   │   ├── analytics/
+│   │   │   │   ├── transactions/
+│   │   │   │   └── page.tsx
+│   │   │   ├── consumer/
+│   │   │   │   ├── orders/
+│   │   │   │   ├── tracking/
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   ├── blockchain/
+│   │   │   └── products/
+│   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   ├── dashboard/
+│   │   │   └── shared/
+│   │   └── lib/
+│   │       ├── contracts/
+│   │       ├── utils/
+│   │       └── providers/
+│   ├── types/
+│   └── styles/
+├── public/
+└── contracts/
 ```
 
 ## Contributing
